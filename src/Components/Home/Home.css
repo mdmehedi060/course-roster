@@ -1,0 +1,44 @@
+/*   
+  .home-container{
+      display: flex;
+      justify-content: space-between;
+    }
+.card-container{
+  width: 600px;
+  display: flex ;
+  flex-wrap: wrap;
+  gap: 15px;
+  
+}
+.card{
+  width: 250px;
+  height: 330px;
+  border: 1px solid red;
+  padding: 10px;
+}
+
+.photo{
+  width: 250px;
+  height: 150px;
+  text-align: center;
+  
+}
+
+.info{
+  display: flex;
+  justify-content: space-evenly;
+}
+.card-btn{
+ color: white;
+  background-color: blue;
+  width: 230px;
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
+.bookmark{
+  width: 30px;
+  height: 40px;
+  color: brown;
+} */
