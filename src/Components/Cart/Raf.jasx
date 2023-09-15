@@ -1,0 +1,101 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
+import { FaBook } from 'react-icons/fa';
+import Cart from "../Cart/Cart";
+import { ToastContainer, toast } from 'react-toastify';
+
+
+
+const Home = () => {
+  const [allCourses, setAllCourses] = useState([]);
+  const [selectedCourses, setSelectedCourses] = useState ([]);
+  const [remaining, setRemaining] = useState (0);
+  const [totalCredit, setTotalCredit] = useState (0);
+
+  useEffect(() => {
+    fetch("./data.json")
+      .then((res) => res.json())
+      .then((data) => setAllCourses(data));
+  }, []);
+  
+    const handleSelectCourse = (course) => {
+
+        const isExist = selectedCourses.find(item => item.id == course.id);
+
+        let count = course.credit;
+
+        if (isExist) {
+            return alert('Already Enrolled')
+        }
+        else{
+
+    selectedCourses.forEach(item => {
+        count = count + item.credit;
+    });
+    
+    const totalRemaining = 20 - count;
+    
+    if (count > 20){
+        return alert ("Credit End, No more")
+    }
+    else {
+        setTotalCredit (count);
+        setRemaining(totalRemaining);            setSelectedCourses([...selectedCourses, course]);
+        }
+    }};
+ 
+//   console.log(allCourse);
+  return (
+    <div className="container mx-auto w-auto">
+      <h1 className=" text-4xl font-bold text-center justify-center">
+        Course Registration
+      </h1>
+      <div className="home-container flex flex-row">
+        <div className="card-container flex flex-wrap ">
+        {allCourses.map((course) => (
+            <div key={course.id} className="card 
+            w-[312px] h-[415px] bg-slate-200 rounded-xl p-4 m-4">
+          <div className="flex flex-col justify-items-center ">
+          <div className="allCardDesign">
+              <div className="card-img">
+                <img
+                  className="w-[280px] h-[144px] "
+                  src={course.img}
+                  alt=""
+                />
+              </div>
+              <h2 className="mt-2 font-bold text-center">
+              {course.course_name}
+              </h2>
+              <p className="text-center mt-2  ">
+              {course.Course_details}
+              </p>
+              <div className="flex justify-between mt-2">
+                <p>Price : $ {course.price}</p>
+                <div className="flex gap-2">
+                <button><FaBook></FaBook></button>
+                <p>Credit : {course.credit}</p>
+                </div>
+              </div>
+            </div>
+            <div>
+            <button onClick={() => handleSelectCourse(course)} className="btn btn-wide bg-[#2F80ED] text-white mt-2 ml-3   ">
+                Select
+              </button>
+            </div>
+          </div>
+        </div>
+            ))}
+        </div>
+        <div className="cart">
+            <Cart selectedCourses = {selectedCourses} remaining = {remaining}
+            totalCredit = {totalCredit}
+            ></Cart>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;

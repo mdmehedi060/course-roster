@@ -1,19 +1,21 @@
 // import PropTypes from 'prop-types';
-const Cart = ({ selectCourse,remainingTime }) => {
-  console.log(selectCourse);
+const Cart = ({ selectedCourses, totalCredit, remaining }) => {
+  console.log( remaining);
   return (
     <div>
-      <h2>Credit Hour Remaining:{remainingTime}</h2>
+      <h2>Credit Hour Remaining:{remaining}</h2>
 
       <h3>Course Name</h3>
       {
-       selectCourse.map((course) => (
+       selectedCourses.map((course,index) => (
 
-          <li key={course.id}>{course.course_name}</li>
+         <ol key={course.id}>
+            <li key={course.id}>{index+1} {course.course_name}</li>
+         </ol>
         )
         )
       }
-      <h4>Total Credit Hour :</h4>
+      <h4>Total Credit Hour :{totalCredit }</h4>
     </div>
   );
 };
