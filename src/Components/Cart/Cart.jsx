@@ -1,5 +1,5 @@
 // import PropTypes from 'prop-types';
-const Cart = ({ selectedCourses, totalCredit, remaining }) => {
+const Cart = ({remaining, selectedCourses, totalCredit }) => {
   console.log( remaining);
   return (
     <div>
@@ -10,7 +10,7 @@ const Cart = ({ selectedCourses, totalCredit, remaining }) => {
        selectedCourses.map((course,index) => (
 
          <ol key={course.id}>
-            <li key={course.id}>{index+1} {course.course_name}</li>
+            <li key={course.id}>{index+1}. {course.course_name}</li>
          </ol>
         )
         )
