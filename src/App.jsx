@@ -9,7 +9,8 @@ function App() {
     <>
       
    
-   <Home></Home>
+      <Home></Home>
+     
     </>
   )
 }

@@ -29,3 +29,4 @@ const Cart = ({remaining, selectedCourses, totalCredit }) => {
 
 export default Cart;
 
+

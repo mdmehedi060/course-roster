@@ -1,36 +1,37 @@
 1.Add at least 3 Project features
 
-a. User Profile Management:
-
-Implement a user profile management system where users can create and update their profiles. Allow them to add personal information such as name, contact details, profile picture, and a short bio.
-Enable users to view their course registration history, including current and past courses.
-Add an option for users to reset their passwords or update their email addresses securely.
-
-b.Course Recommendations:
-
-Implement a course recommendation system that suggests courses to users based on their previous registrations, interests, or academic history.
-Utilize machine learning algorithms or collaborative filtering to provide personalized course suggestions.
-Allow users to filter and sort courses based on various criteria like subject, difficulty level, and instructor rating.
-
-c. Payment Integration:
-
-Integrate a payment gateway (e.g., Stripe, PayPal) to allow users to pay for courses during registration.
-Implement secure payment processing and storage of payment details following industry standards for security.
-Provide users with options for different payment methods (credit card, PayPal, etc.) and ensure a seamless checkout experience.
-These additional features will enhance the overall user experience and make your course registration React project more comprehensive and valuable for both students and administrators.
+a. features: 
+1.there are different type of course in this project.user can select course upto 20 credit hour.
+2. selected course name ,total time ,total course price are shown in cart section.
+3.Warning massage will shown for repeated selection and for crossing credit limit.
 
 
 2.Discuss how you managed the state in your assignment project.
 
+a.Importing Necessary Hooks:
 
-a. Local Component State:
+You imported the useState and useEffect hooks from the 'react' library. These hooks are crucial for managing state and side effects in a functional component.
 
-*For simpler projects, you can manage state locally within individual React components.
-*Use the useState hook to create and manage component-level state variables.
-*This approach is suitable for managing UI-related state, such as form inputs, modal visibility, or temporary data
 
-b.Context API:
+b.Initializing State Variables:
 
-*For medium-sized projects with the need to share state among multiple components, you can use React's Context API.
-*Create a context that holds the shared state and provide it at the top of your component tree.
-*Use the useContext hook to access and update the shared state.
+
+*You declared several state variables using the useState hook. Each state variable corresponds to a specific piece of data that needs to be managed:
+allCourses: Stores the list of all available courses.
+selectedCourses: Keeps track of the courses that the user has selected.
+remaining: Represents the remaining credit hours the user can select.
+totalCredit: Stores the total credit hours selected by the user.
+
+c.Fetching Data with useEffect:
+
+You used the useEffect hook to fetch data from a JSON file when the component mounts. This data is stored in the allCourses state variable. The empty dependency array ([]) ensures that the effect runs only once, simulating componentDidMount.
+
+d.Handling Course Selection:
+
+*You implemented the handleSelectorCourse function to handle course selection. This function checks whether the selected course exceeds the maximum allowed credit hours (20) and whether the course has already been selected. It then updates the state accordingly.
+*If the course is valid for selection, you update the selectedCourses, totalCredit, and remaining state variables to reflect the changes.
+
+e.Rendering the UI:
+
+*In the JSX part of your component, you map through the allCourses array to display a list of available courses. Each course card includes a "Select" button that triggers the handleSelectorCourse function when clicked.
+*You also render a Cart component that displays the selected courses, remaining credits, and total selected credits.
