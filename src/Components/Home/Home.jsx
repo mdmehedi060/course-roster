@@ -1,7 +1,8 @@
 
 import { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
-// import { ToastContainer, toast } from 'react-toastify';
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -24,7 +25,7 @@ const Home = () => {
         let count = course.credit_time;
 
         if (isExist) {
-            return alert('Already Enrolled')
+            return toast('Already Enrolled')
         }
         else{
 
@@ -35,7 +36,7 @@ const Home = () => {
     const totalRemaining = 20 - count;
     
     if (count > 20){
-        return alert ("Credit End, No more")
+        return toast ("Credit End, No more")
     }
     else {
         setTotalCredit (count);
@@ -76,7 +77,8 @@ const Home = () => {
             <div>
             <button onClick={() => handleSelectorCourse(course)} className="btn btn-wide bg-[#2F80ED] text-white mt-2 ml-3  w-64 p-2  ">
                 Select
-              </button>
+                </button>
+                <ToastContainer />
             </div>
           </div>
         </div>
