@@ -47,7 +47,7 @@ const Home = () => {
  
 //   console.log(allCourse);
   return (
-    <div className="container mx-auto w-auto">
+    <div className="container mx-auto w-auto mt-10">
       <h1 className=" text-4xl font-bold text-center justify-center">
         Course Registration
       </h1>
@@ -67,10 +67,10 @@ const Home = () => {
               <p><small>{course.details}</small></p>
              
               <div className="flex justify-between mt-2">
-               <p>Price:${course.price} </p>
+               <p> <span className='text-1xl font-bold'>$</span> Price: {course.price} </p>
                 <div className="flex gap-2">
                 <img src="https://i.ibb.co/X256Ry5/Frame.png" alt="" />
-                <p>Credit: {course.credit_time} hr</p>
+                <p className=''>Credit: {course.credit_time} hr</p>
                 </div>
               </div>
             </div>

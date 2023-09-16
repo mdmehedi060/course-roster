@@ -1,11 +1,11 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 const Cart = ({remaining, selectedCourses, totalCredit }) => {
   console.log( remaining);
   return (
-    <div>
-      <h2>Credit Hour Remaining:{remaining}</h2>
+    <div className='mt-4'>
+      <h2 className='text-2xl'>Credit Hour Remaining:{remaining}</h2>
 
-      <h3>Course Name</h3>
+      <h3 className='text-2xl font-bold'>Course Name</h3>
       {
        selectedCourses.map((course,index) => (
 
@@ -15,17 +15,16 @@ const Cart = ({remaining, selectedCourses, totalCredit }) => {
         )
         )
       }
-      <h4>Total Credit Hour :{totalCredit }</h4>
+      <h4 className='text-2xl'>Total Credit Hour :{totalCredit }</h4>
     </div>
   );
 };
 
-// Cart.propTypes = {
-//   selectCourse: PropTypes.object.isRequired,
-//   // handleWorkBookmark: PropTypes.func,
-//   // handlemarkIsRead: PropTypes.func,
-//   // id: PropTypes.number
-// }
+Cart.propTypes = {
+  selectedCourses: PropTypes.object.isRequired,
+remaining: PropTypes.number,
+  totalCredit: PropTypes.number
+}
 
 export default Cart;
 
